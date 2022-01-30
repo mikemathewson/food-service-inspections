@@ -1,6 +1,7 @@
 import type { Inspection } from "../types";
+import { useState, useEffect } from "react";
 import Card from "./Card";
-import Legend from "./Legend";
+import Switch from "../components/Switch";
 import {
   CheckCircleIcon,
   ExclamationIcon,
@@ -16,8 +17,20 @@ type GroupedInspections = {
 };
 
 export default function InspectionsTable({ inspections }: Props) {
+  const [filteredInspections, setFilteredInspections] = useState<Inspection[]>(
+    []
+  );
+  const [criticalOnly, setCriticalOnly] = useState(false);
+
+  useEffect(() => {
+    const filtered = inspections.filter((inspection) => {
+      return !criticalOnly || inspection.type === "Critical Violation";
+    });
+    setFilteredInspections(filtered);
+  }, [inspections, criticalOnly]);
+
   // Get array of unique dates
-  const dates: string[] = inspections
+  const dates: string[] = filteredInspections
     .map((a) => a.date)
     .filter(
       (value, index, self) => index === self.findIndex((t) => t === value)
@@ -25,10 +38,13 @@ export default function InspectionsTable({ inspections }: Props) {
     .reverse();
 
   // Group by date
-  const grouped = inspections.reduce((r: GroupedInspections, a: Inspection) => {
-    r[a.date] = [...(r[a.date] || []), a];
-    return r;
-  }, {});
+  const grouped = filteredInspections.reduce(
+    (r: GroupedInspections, a: Inspection) => {
+      r[a.date] = [...(r[a.date] || []), a];
+      return r;
+    },
+    {}
+  );
 
   // Date format
   const dateOptions: Intl.DateTimeFormatOptions = {
@@ -39,7 +55,12 @@ export default function InspectionsTable({ inspections }: Props) {
 
   return (
     <div>
-      <Legend />
+      <Switch
+        id="critical-only"
+        label="Critical violations only"
+        checked={criticalOnly}
+        toggle={() => setCriticalOnly(!criticalOnly)}
+      />
       {dates.map((date) => (
         <Card
           title={new Date(date).toLocaleDateString("en-US", dateOptions)}
