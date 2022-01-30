@@ -7,7 +7,7 @@ type Props = {
 export default function FacilityList(props: Props) {
   return (
     <div
-      className={`bg-white overflow-hidden shadow sm:rounded-lg ${props.className}`}
+      className={`bg-white overflow-hidden shadow rounded ${props.className}`}
     >
       <>
         <div className="border-b-2 border-gray-100 px-4 sm:px-6 py-3 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">

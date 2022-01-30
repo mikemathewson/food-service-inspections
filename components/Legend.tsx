@@ -7,7 +7,7 @@ import {
 export default function Legend() {
   return (
     <div className="mb-4">
-      <div className="flex items-center sm:justify-end">
+      <div className="flex items-center justify-center sm:justify-end">
         <div className="text-center flex flex-col sm:flex-row items-center">
           <XCircleIcon className="h-4 w-4 mr-1 mt-0.5 text-rose-800" />
           <span className="text-xs sm:text-sm">Critical violations</span>

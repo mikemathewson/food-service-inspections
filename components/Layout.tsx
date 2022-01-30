@@ -13,7 +13,7 @@ export default function Layout({ children }: Props) {
         <title>NYS Food Service Inspections</title>
       </Head>
       <Header />
-      <main className="container mx-auto flex-1 max-w-screen-md py-6 sm:py-10">
+      <main className="container mx-auto flex-1 max-w-screen-md px-3 py-6 sm:py-10">
         {children}
       </main>
       <Footer />

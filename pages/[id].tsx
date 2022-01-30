@@ -62,7 +62,7 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <div className="sticky top-0 bg-slate-100 border-b-2 border-slate-200 flex items-center px-2 py-4 sm:px-0 mb-8">
+      <div className="sticky top-0 bg-slate-100 border-b-2 border-slate-200 flex items-center px-2 py-4 sm:px-0 mb-8 -mx-3">
         <Link href="/">
           <a>
             <ChevronLeftIcon className="h-8 w-8 mt-0.5 text-slate-400 mr-2 sm:mr-4" />
