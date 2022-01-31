@@ -42,6 +42,7 @@ export default function Pagination({ page, perPage, total, setPage }: Props) {
         }`}
         disabled={!hasPrev}
         onClick={handlePreviousPage}
+        aria-label="Previous page"
       >
         <ChevronLeftIcon className="h-6 w-6 mt-0.5" />
       </button>
@@ -52,6 +53,7 @@ export default function Pagination({ page, perPage, total, setPage }: Props) {
         }`}
         disabled={!hasNext}
         onClick={handleNextPage}
+        aria-label="Next page"
       >
         <ChevronRightIcon className="h-6 w-6 mt-0.5" />
       </button>

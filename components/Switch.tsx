@@ -24,7 +24,11 @@ export default function Switch({ id, label, checked, toggle }: Props) {
         />
         <div className="bg-white rounded-full w-4 h-4" />
       </div>
-      <label className="ml-2 cursor-pointer" onClick={() => toggle()}>
+      <label
+        className="ml-2 cursor-pointer"
+        htmlFor={id}
+        onClick={() => toggle()}
+      >
         {label}
       </label>
     </div>
